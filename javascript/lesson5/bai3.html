@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bai3</title>
+</head>
+
+<body>
+
+    <script>
+
+        var name = prompt("nhập hộ tên");
+        var subject = prompt("nhập tên môn học");
+        var lab1 = 0;
+        var lab2 = 0;
+        var lab3 = 0;
+        var final = 0;
+        var tong =0;
+        
+        var promise = new Promise(function (resolve, reject) {
+            lab1 = prompt("nhập lab1");
+            return resolve();
+        })
+        promise
+            .then(function () {
+                return new Promise(function (resolve, reject) {
+                    setTimeout(function () {
+                        lab2 = prompt("nhập lab2");
+                        return resolve();
+                    }, 3000);
+                })
+
+            }).then(function () {
+                return new Promise(function (resolve, reject) {
+                    setTimeout(function () {
+                        lab3 = prompt("nhập lab3");
+                        return resolve();
+                    }, 4000);
+                })
+            })
+            .then(function () {
+                return new Promise(function (resolve, reject) {
+                    setTimeout(function () {
+                        final = prompt("nhập điểm final");
+                        return resolve();
+                    }, 3000);
+                })
+            })
+            .then(function(){
+                tong=lab1*0.1+lab2*0.2+lab3*0.3+final*0.4;
+                console.log(tong);
+                if(tong<5){
+                    console.log("học luc kem");
+                }
+                else if(tong<7 && tong>=5){
+                    console.log("hoc luc trug binh kha")
+                }
+                else if(tong<8.5 && tong>=7){
+                    console.log("hoc luc trug binh kha")
+                }
+                else{
+                    console.log("hoc luc gioi");
+                }
+            })
+    </script>
+</body>
+
+</html>

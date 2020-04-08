@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+    <style>
+        .user_item{
+            color: green;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+  </head>
+  <body>
+    <ul id="target"></ul>
+    <script>
+      var user = [
+        { id: 1, name: "thuy", gender: 1 },
+        { id: 2, name: "hang", gender: 1 },
+        { id: 3, name: "phuong", gender: 2 },
+        { id: 4, name: "ha", gender: 1 }
+      ];
+      var target = document.querySelector("#target");
+      user.forEach(myFunction);
+
+      function myFunction(item, index) {
+        switch (item.gender) {
+          case 1:
+            var gender = "male";
+            break;
+          default:
+            var gender = "female";
+        }
+        target.innerHTML +=
+          "<li class='user_item'>" + item.id + "-" + item.name + "-" + gender + "</li>";
+      }
+    </script>
+  </body>
+</html>

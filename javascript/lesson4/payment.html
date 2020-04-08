@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>payment</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            justify-items: center;
+        }
+
+        .text {
+            text-align: center;
+            width: 50%;
+            padding-top: 10px;
+            background: rgb(56, 173, 219);
+            background: linear-gradient(90deg, rgba(56, 173, 219, 1) 0%, rgba(247, 152, 29, 1) 100%);
+            color: #fff;
+            border-radius: 10px;
+            font-size: 24px;
+        }
+
+        .logo {
+            padding-bottom: 10px;
+            width: 90%;
+        }
+
+        .selected-item {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .selected-item p {
+            font-size: 18px;
+        }
+
+        .selected-item p span {
+            font-weight: bold;
+        }
+
+        .dropdown {
+            margin: 20px auto;
+            width: 300px;
+            position: relative;
+            -webkit-perspective: 800px;
+            perspective: 800px;
+            padding-bottom: 50px;
+        }
+
+        .dropdown.active .selLabel:after {
+            content: '\25B2';
+        }
+
+        .dropdown.active .dropdown-list li:nth-child(1) {
+            -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+        }
+
+        .dropdown.active .dropdown-list li:nth-child(2) {
+            -webkit-transform: translateY(200%);
+            transform: translateY(200%);
+        }
+
+        .dropdown.active .dropdown-list li:nth-child(3) {
+            -webkit-transform: translateY(300%);
+            transform: translateY(300%);
+        }
+
+        .dropdown.active .dropdown-list li:nth-child(4) {
+            -webkit-transform: translateY(400%);
+            transform: translateY(400%);
+        }
+
+        .dropdown>span {
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: 60px;
+            line-height: 60px;
+            color: #fff;
+            font-size: 18px;
+            letter-spacing: 2px;
+            background: #34495e;
+            display: block;
+            padding: 0 50px 0 30px;
+            position: relative;
+            z-index: 9999;
+            cursor: pointer;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transform-origin: 50% 0%;
+            transform-origin: 50% 0%;
+            -webkit-transition: -webkit-transform 300ms;
+            transition: -webkit-transform 300ms;
+            transition: transform 300ms;
+            transition: transform 300ms, -webkit-transform 300ms;
+            -webkit-backface-visibility: hidden;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .dropdown>span:after {
+            content: '\25BC';
+            position: absolute;
+            right: 0px;
+            top: 15%;
+            width: 50px;
+            text-align: center;
+            font-size: 12px;
+            padding: 10px;
+            height: 70%;
+            line-height: 24px;
+            border-left: 1px solid #ddd;
+        }
+
+        .dropdown>span:active {
+            -webkit-transform: rotateX(45deg);
+            transform: rotateX(45deg);
+        }
+
+        .dropdown>span:active:after {
+            content: '\25B2';
+        }
+
+        .dropdown-list {
+            position: absolute;
+            top: 0px;
+            width: 100%;
+        }
+
+        .dropdown-list li {
+            display: block;
+            list-style: none;
+            left: 0;
+            opacity: 1;
+            -webkit-transition: -webkit-transform 300ms ease;
+            transition: -webkit-transform 300ms ease;
+            transition: transform 300ms ease;
+            transition: transform 300ms ease, -webkit-transform 300ms ease;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        .dropdown-list li:nth-child(1) {
+            background-color: #1abc9c;
+            z-index: 4;
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
+
+        .dropdown-list li:nth-child(2) {
+            background-color: #3498db;
+            z-index: 3;
+            -webkit-transform: translateY(3%);
+            transform: translateY(3%);
+        }
+
+        .dropdown-list li:nth-child(3) {
+            background-color: #9b59b6;
+            z-index: 2;
+            -webkit-transform: translateY(6%);
+            transform: translateY(6%);
+        }
+
+        .dropdown-list li:nth-child(4) {
+            background-color: #e67e22;
+            z-index: 1;
+            -webkit-transform: translateY(9%);
+            transform: translateY(9%);
+        }
+
+        .dropdown-list li span {
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+            -webkit-backface-visibility: hidden;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            width: 100%;
+            font-size: 18px;
+            line-height: 60px;
+            padding: 0 30px;
+            display: block;
+            color: #fff;
+            cursor: pointer;
+            letter-spacing: 2px;
+        }
+
+        .my-card {
+            position: absolute;
+            left: 44%;
+            top: -20px;
+            border-radius: 50%;
+        }
+
+        h1 {
+            color: #fff;
+            margin: 40px 0 60px 0;
+            font-weight: 300;
+        }
+
+        .our-team-main {
+            width: 100%;
+            height: auto;
+            border: 5px #323233 solid;
+            background: #fff;
+            text-align: center;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            transition: 0.5s;
+            margin-bottom: 28px;
+        }
+
+
+        .our-team-main img {
+            border-radius: 50%;
+            margin-bottom: 20px;
+            width: 90px;
+        }
+
+        .our-team-main h3 {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .our-team-main p {
+            margin-bottom: 0;
+        }
+
+        .team-back {
+            width: 100%;
+            height: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 5px 15px 0 15px;
+            text-align: left;
+            background: #fff;
+
+        }
+
+        .team-front {
+            width: 100%;
+            height: 210px;
+            position: relative;
+            z-index: 10;
+            background: #fff;
+            padding: 15px;
+            bottom: 0px;
+            transition: all 0.5s ease;
+        }
+
+        .our-team-main:hover .team-front {
+            bottom: -200px;
+            transition: all 0.5s ease;
+        }
+
+        .our-team-main:hover {
+            border-color: #777;
+            transition: 0.5s;
+        }
+
+        .team-back p {
+            font-size: 15px;
+            font-weight: 500;
+            color: #4aa3af;
+        }
+
+        .team-back ul {
+            padding: 0;
+            margin-left: 5px;
+
+        }
+
+        .team-back ul li {
+            font-size: 12px;
+        }
+
+        .right img {
+            width: 83%;
+            padding-top: 58px;
+            padding-left: 22px;
+
+        }
+
+        @media only screen and (max-width: 768px) {
+            .text {
+                width: 90% !important;
+            }
+
+            .right img {
+                display: none;
+            }
+
+            .dcb {
+                padding-top: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="text">
+            <p>Thủ tục thanh toán</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="selected-item">
+            <p>Bạn đã chọn phương thức : <span>Trống</span></p>
+        </div>
+        <div class="dropdown">
+            <span class="selLabel">Chọn phương thức </span>
+            <input type="hidden" name="cd-dropdown">
+            <ul class="dropdown-list">
+                <li data-value="1" id="cod">
+                    <span>COD</span>
+                </li>
+                <li data-value="2" id="VNpay">
+                    <span>VNpay</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="bd" style="display: none;">
+        <div class="container-fruid pt-3">
+            <div class="row">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-3 abc text-center col-sm-12">
+                    <div class="card border-info mx-sm-1 p-3">
+                        <div class="card border-info shadow text-info p-3 my-card"><span class="fas fa-window-maximize"
+                                aria-hidden="true"></span></div>
+                        <div class="text-info text-center mt-3">
+                            <img src="https://indochinapost.vn/wp-content/uploads/2018/06/chinh-sach-hoan-hang-startribune.jpg"
+                                width="100%">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 right">
+                    <img src="https://img3.thuthuatphanmem.vn/uploads/2019/10/25/hinh-ve-mui-ten_122007182.png">
+                </div>
+                <div class="col-md-3 dcb text-center col-sm-12">
+
+                    <div class="our-team-main">
+                        <div class="team-front">
+                            <img src="https://tusach.thuvienkhoahoc.com/images/thumb/8/8e/DO-BOD-COD-la-gi.png/500px-DO-BOD-COD-la-gi.png"
+                                class="img-fluid" width="100%">
+                            <h3>COD</h3>
+                            <p>COD là gì</p>
+                        </div>
+                        <div class="team-back">
+                            <span>
+                                <p>Dịch vụ Ship hàng thu tiền hộ COD hoạt động như thế nào?</p>
+                                <ul>
+                                    <li>Người mua đặt hàng với người bán (chưa thánh toán tiền)</li>
+                                    <li>Bưu tá đến địa chỉ người bán nhận hàng và đi giao
+                                    </li>
+                                    <li>ShipChung giao hàng đến tay người mua</li>
+                                    <li>Người mua đặt hàng với người bán (chưa thánh toán tiền)</li>
+                                </ul>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+
+                </div>
+            </div>
+        </div>
+        <div class="container" style="display:flex;display: flex;
+ justify-content: center;color: #FFF;">
+            <button type="button" class="btn btn-warning" style="color: #fff;">Tiếp tục</button>
+        </div>
+    </div>
+    <div class="bc" style="display: none;">
+        <div class="container-fruid pt-3">
+            <div class="row">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-3 abc text-center">
+                    <div class="card border-info mx-sm-1 p-3">
+                        <div class="card border-info shadow text-info p-3 my-card"><span class="fas fa-money-bill-alt"
+                                aria-hidden="true"></span></div>
+                        <div class="text-info text-center mt-3">
+                            <img src="https://vnpay.vn/wp-content/uploads/2019/10/900x603-2.png" width="100%" style="height: 170px;
+                                ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 right">
+                    <img src="https://img3.thuthuatphanmem.vn/uploads/2019/10/25/hinh-ve-mui-ten_122007182.png">
+                </div>
+                <div class="col-md-3 dcb text-center">
+
+                    <div class="our-team-main">
+
+                        <div class="team-front">
+                            <img src="https://i.ytimg.com/vi/REUlWVbzNXk/maxresdefault.jpg" class="img-fluid"
+                                width="100%">
+                            <h3>vnpay</h3>
+                            <p>VNPay là gì</p>
+                        </div>
+                        <div class="team-back">
+                            <span>
+                                <p>Dịch vụ Ship hàng thu tiền hộ COD hoạt động như thế nào?</p>
+                                <ul>
+                                    <li>Người mua đặt hàng với người bán (chưa thánh toán tiền)</li>
+                                    <li>Bưu tá đến địa chỉ người bán nhận hàng và đi giao
+                                    </li>
+                                    <li>ShipChung giao hàng đến tay người mua</li>
+                                    <li>Người mua đặt hàng với người bán (chưa thánh toán tiền)</li>
+                                </ul>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+
+                </div>
+            </div>
+        </div>
+        <div class="container" style="display:flex;display: flex;
+ justify-content: center;color: #FFF;">
+            <button type="button" class="btn btn-warning" style="color: #fff;">Tiếp tục</button>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $(".selLabel").click(function () {
+                $('.dropdown').toggleClass('active');
+            });
+            $(".dropdown-list li").click(function () {
+                $('.selLabel').text($(this).text());
+                $('.dropdown').removeClass('active');
+                $('.selected-item p span').text($('.selLabel').text());
+            });
+            $("#cod").click(function () {
+                $(".bd").show();
+                $(".bc").hide();
+            });
+            $("#VNpay").click(function () {
+                $(".bd").hide();
+                $(".bc").show();
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bai1</title>
+</head>
+
+<body>
+    <script>
+            var promise = new Promise(function (resolve, reject) {
+             console.log("b1.da ngu day");
+            return resolve();
+        })
+        promise
+            .then(function () {
+                return new Promise(function (resolve, reject) {
+                    console.log("b2.dang danh rang");
+                    setTimeout(function () {
+                        console.log("da danh rang xong");
+                        return resolve();
+                    }, 2000);
+                })
+
+            }).then(function () {
+                return new Promise(function (resolve, reject) {
+                    console.log("b3.dang thay quan ao");
+                    setTimeout(function () {
+                        console.log("da thay quan ao xong");
+                        return resolve();
+                    }, 3000);
+                })
+            })
+            .then(function () {
+                return new Promise(function (resolve, reject) {
+                    console.log("b4.dang di chuyen");
+                    setTimeout(function () {
+                        console.log("da den truong");
+                        return resolve();
+                    }, 4000);
+                })
+            })
+    </script>
+</body>
+
+</html>

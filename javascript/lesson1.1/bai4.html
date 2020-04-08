@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bai4</title>
+</head>
+<body>
+    <div>
+        <label>1st person name</label>
+        <input type="text" id="name1" value="">
+    </div>
+    <div>
+        <label>1st person age</label>
+        <input type="text" id="age1" value="">
+    </div>
+    <div>
+        <label>1st person adress1</label>
+        <input type="text" id="adress1" value="">
+    </div>
+    <div>
+        <label>2st person name</label>
+        <input type="text" id="name2" value="">
+    </div>
+    <div>
+        <label>2st person age</label>
+        <input type="text" id="age2" value="">
+    </div>
+    <div>
+        <label>2st person adress2</label>
+        <input type="text" id="adress2" value="">
+    </div>
+    <input type="button" value="showinfor" onclick="add()">
+    <ul id="st1">
+    
+    </ul>
+    <script>
+        var name1=document.getElementById("name1");
+        var name2=document.getElementById("name2");
+        var age1=document.getElementById("age1");
+        var age2=document.getElementById("age2");
+        var adress1=document.getElementById("adress1");
+        var adress2=document.getElementById("adress2");
+
+        
+        function add(){
+        if(name1.value ==''|| name2.value ==''|| age1.value =='' ||age2.value =='' || adress1.value =='' ||adress2.value ==''){
+            alert("yêu cầu nhập đầu đủ thông tin");
+        } else {
+            var Person = {
+                    name: "person",
+                    age: "1",
+                    address: ""
+                }
+            var FirstPerson = {
+                proto: Person
+            }
+            FirstPerson.name = name1.value;
+            FirstPerson.age = age1.value;
+            FirstPerson.address = adress1.value;
+
+            var SecondtPerson = {
+                proto: Person
+            }
+            SecondtPerson.name = name2.value;
+            SecondtPerson.age = age2.value;
+            SecondtPerson.address = adress2.value;
+            
+            document.getElementById("st1").innerHTML = 
+            '<li class="abc" >'+FirstPerson.name+'-'+FirstPerson.age+'-'+FirstPerson.address+'</li>'+
+            '<li class="abc" >'+SecondtPerson.name+'-'+SecondtPerson.age+'-'+SecondtPerson.address +'</li>';
+            }
+        }
+    </script>
+</body>
+</html>

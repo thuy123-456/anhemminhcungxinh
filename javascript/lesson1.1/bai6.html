@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+  </head>
+  <body>
+    <label for="">Date</label>
+    <input id="date" type="number" /><br />
+    <label for="">Month</label>
+    <input id="month" type="number" /><br />
+    <label for="">Year</label>
+    <input id="year" type="number" /><br />
+    <button onclick="convert()">Convert</button>
+    <div id="thu"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script>
+      function convert() {
+        var date = document.querySelector("#date").value;
+        var month = document.querySelector("#month").value;
+        var year = document.querySelector("#year").value;
+        var dt = moment(`${year}/${month}/${date}`, "YYYY/MM/DD");
+        var thu = dt.format("dddd");
+        document.querySelector("#thu").innerText = thu;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .user_item {
+            color: green;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form">
+        <input type="text" id="abc" placeholder="nhập tên">
+        <input type="button" value="enter" onclick="add()"> 
+    </div>
+    <ul id="target">
+        
+    </ul>
+    <script>
+        var ul = document.querySelector('ul');
+        var olala =document.getElementById('abc');
+        var arr=[];
+        function add(){
+            arr.push(olala.value);
+            console.log(arr);
+            arr.sort();
+            ul.innerHTML='';
+            for(var i=0;i<arr.length;i++){
+                ul.innerHTML +='<li class="user_item">'+arr[i]+'</li>';
+            }
+        }
+    </script>
+</body>
+
+</html>
+</html>

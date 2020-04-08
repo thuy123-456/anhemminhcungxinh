@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>bài 3</title>
+  </head>
+
+  <body>
+    <script>
+      var student = {
+        Name:"nguyen thi thuy",
+        age:20,
+        adress:"pv",
+        phone:043,
+        birthday:0606,
+        Point:9,
+        getAvgScore() {
+          return this.Point;
+        },
+        setAvgScore(point) {
+          this.avgScore = point;
+        },
+        changesadress(adress) {
+          this.adress = adress;
+        }
+      };
+      var studentPoly = {
+        __proto__: student
+      };
+      document.write("Điểm :" + studentPoly.getAvgScore() + "<br>");
+      studentPoly.setAvgScore(5);
+      document.write("Điểm tb sau thay đổi:" + studentPoly.getAvgScore() + "<br>");
+      studentPoly.changesadress("Hà Nội");
+      document.write(studentPoly.adress);
+    </script>
+  </body>
+</html>

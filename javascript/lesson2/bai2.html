@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bài 2</title>
+</head>
+
+<body>
+    String
+    <input type="text" id="a"><br /><br />
+    Number
+    <input type="number" id="b">
+    <button type="submit" onclick="hihi()">convert</button>
+    <h2></h2>
+    <script>
+        var a = document.querySelector("#a");
+        var b = document.querySelector("#b");
+        var h2 = document.querySelector("h2");
+        function hihi() {
+           var string= a.value;
+           var number= b.value;
+           var c= string.substr(0,number);
+           if(string.length>number){
+            h2.innerHTML=c+"...";       
+           }
+           else{
+            h2.innerHTML=c + ".";    
+           }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Bai 3</h1>
+    <script>
+      function student(name, age, address, phone, birthday) {
+        this.name = name;
+        this.age = age;
+        this.address = address;
+        this.phone = phone;
+        this.birthday = birthday;
+        this.subjects = (nameSub,teacher,point,year) => {
+          this.nameSub = nameSub;
+          this.teacher = teacher;
+          this.point = point;
+          this.year = year;
+        };
+      }
+
+      let newStudent = new student(
+        "thuy",
+        22,
+        "vinhphuc",
+        "0379723021",
+        "99"
+      );
+      newStudent.subjects("js-nangcao","thien","10",2020)
+      console.log(newStudent);
+    </script>
+  </body>
+</html>

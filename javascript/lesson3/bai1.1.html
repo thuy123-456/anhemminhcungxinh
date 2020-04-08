@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>bài 3</title>
+  </head>
+
+  <body>
+    <script>
+      var sinhvien = {
+        id: 1,
+        fullname: "nguyen thi thuy",
+        email: "thuyntph07764@fpt.edu.vn",
+        avatar:
+          "https://atpmedia.vn/wp-content/uploads/2019/12/C%C3%A1ch-s%E1%BB%AD-d%E1%BB%A5ng-th%E1%BA%BB-IMG.jpg",
+        adress: "phucyen,vinhphuc",
+        study_major: "deverloper",
+        avgScore: 9,
+        getAvgScore() {
+          return this.avgScore;
+        },
+        setAvgScore(point) {
+          this.avgScore = point;
+        },
+        changesadress(adress) {
+          this.adress = adress;
+        }
+      };
+      document.write("Điểm tb :" + sinhvien.getAvgScore() + "<br>");
+      sinhvien.setAvgScore(5);
+      document.write("Điểm tb sau thay đổi:" + sinhvien.getAvgScore() + "<br>");
+      sinhvien.changesadress("Hà Nội");
+      document.write(sinhvien.adress);
+      
+    </script>
+  </body>
+</html>

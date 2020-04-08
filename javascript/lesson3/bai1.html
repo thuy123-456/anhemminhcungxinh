@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var vandongvien = {
+            ma_van_dong_vien: "2",
+            ho_va_ten: "nguyễn Van a",
+            ngay_sinh:1990,
+            giai_thuong: "nhat",
+            abcd: function kiemtradieukien(ngaythang, tuoi) {
+                ngaythang=2000
+                tuoi=18
+                date=ngaythang-tuoi
+                if(date>=this.ngay_sinh){
+                    return true
+                }
+                else {
+                    return false
+                }
+
+            }
+
+        }
+    
+        console.log(vandongvien.abcd())
+    </script>
+</body>
+
+</html>

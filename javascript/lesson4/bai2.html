@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bai2-lab4</title>
+    <style>
+        #change{
+        width:70px;
+        height: 70px;
+        background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="change">
+    </div>
+    <input type="button" onclick="change()" value="change color">
+    <script>
+        var a=document.getElementById('change');
+        function change(){
+            setTimeout(function(){
+                function randomColor(){
+               return '#' + Math.floor(Math.random()*16777215).toString(16);
+            }
+             var color=randomColor();
+             a.style.background=color;
+            }, 1000);
+            
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bài 3</title>
+</head>
+
+<body>
+    String
+    <input type="text" id="abc">
+    <button type="submit" onclick="abc()">convert</button>
+    <h2></h2>
+
+    <script>
+        function abc() {
+            var ahihi = document.querySelector("#abc");
+            var a = document.querySelector("h2");
+            var str = ahihi.value;
+            var patt = /\W+[\w]{1}/g;
+            var arr = str.match(patt);
+            for (var i = 0; i < arr.length; i++) {
+                str = str.replace(arr[i], arr[i].toUpperCase());
+            }
+            var patt2 = /\w/g;
+            var arr2 = str.match(patt2);
+            str = arr2.join("");
+            a.innerHTML=str;
+        }
+    </script>
+</body>
+
+</html>

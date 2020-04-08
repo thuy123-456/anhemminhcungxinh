@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bai1-lab4</title>
+</head>
+<body>
+    <input  type="number" id="weight" placeholder="Cân nặng">
+    <input  id="height" type="number" placeholder="chiều cao">
+    <input type="button" onclick="add()" value="enter">
+    <h2 id="h2"></h2>
+    <script>
+        function add(){
+            var weight=document.getElementById('weight');
+            var height=document.getElementById('height');
+            var hi=document.getElementById('h2');
+            var w = Number(weight.value);
+            var h = Number(height.value)*Number(height.value)
+            var BMI = w/h;
+            hi.innerHTML=BMI;
+            hi.style.color='red';
+        }
+    </script>
+</body>
+</html>

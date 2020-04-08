@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+  </head>
+  <body>
+    <label for="">Date</label>
+    <input id="date" type="number" /><br />
+    <label for="">Month</label>
+    <input id="month" type="number" /><br />
+    <label for="">Year</label>
+    <input id="year" type="number" /><br />
+    <button onclick="convert()">Convert</button>
+    <div id="listDate"></div>
+    <script>
+      function convert() {
+        var date = document.querySelector("#date").value;
+        var month = document.querySelector("#month").value;
+        var year = document.querySelector("#year").value;
+        var months = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December"
+        ];
+        var kieu1 = `${year}-${month}-${date}`;
+        var kieu2 = `${date}/${month}/${year}`;
+        var kieu3 = `${date}.${month}.${year}`;
+        var kieu4 = `${date}, ${months[month - 1].slice(0, 3)} ${year}`;
+        var kieu5 = `${date}, ${months[month - 1]} ${year}`;
+        var kieudate = [kieu1, kieu2, kieu3, kieu4, kieu5];
+        var listDate = "";
+        for (i = 0; i < kieudate.length; i++) {
+          var listDate = listDate + `<h3> ${kieudate[i]} </h3>`;
+        }
+        document.querySelector("#listDate").innerHTML = listDate;
+      }
+    </script>
+  </body>
+</html>
